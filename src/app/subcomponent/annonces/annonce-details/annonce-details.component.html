@@ -1,0 +1,19 @@
+<div *ngIf="annonce">
+
+    <div class="card text-white bg-dark h-100">
+
+
+        <img src="{{annonce.url}}" class="card-img-top" alt="...">
+
+        <div class="card-body">
+            <h5 class="card-title">{{annonce.intitule}} | <span class="badge badge-warning">{{annonce.prix}} $</span>
+            </h5>
+            <p class="card-text">
+                {{annonce.description}}
+            </p>
+            <p class="card-text"><small class="text-muted">{{annonce.date.toLocaleDateString()}}</small></p>
+        </div>
+    </div>
+
+
+</div>

@@ -1,0 +1,47 @@
+<div *ngIf="annonces">
+
+    <select (change)="selectedAnnonce = undefined" [(ngModel)]="selectedCategorie"
+        class="browser-default custom-select">
+        <option selected [value]="default"> Toutes categories </option>
+        <option *ngFor="let cat of categories" [value]="cat">{{cat}}</option>
+
+    </select>
+
+    <div class="row row-cols-1 row-cols-md-3">
+
+        <div *ngIf="selectedCategorie; else nonfiltre">
+            <div *ngFor="let an of annoncesFiltrees">
+
+                <div class="col mb-4">
+
+                    <annonce-item [class.selected]="an == selectedAnnonce" [annonce]="an"
+                        (click)="selectedAnnonce = an">
+                    </annonce-item>
+
+                </div>
+
+            </div>
+        </div>
+
+        <ng-template #nonfiltre>
+            <div *ngFor="let an of annonces">
+
+                <div class="col mb-4">
+
+                    <annonce-item [class.selected]="an == selectedAnnonce" [annonce]="an"
+                        (click)="selectedAnnonce = an">
+                    </annonce-item>
+
+                </div>
+
+            </div>
+        </ng-template>
+
+    </div>
+    <div #target>
+        <annonce-details *ngIf="selectedAnnonce" [annonce]="selectedAnnonce"></annonce-details>
+    </div>
+</div>
+
+<br /><br />
+<hr />
