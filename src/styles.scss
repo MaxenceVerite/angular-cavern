@@ -43,6 +43,7 @@
 $navbar-dark-color:         rbg(237, 211, 175);
 $navbar-dark-hover-color:   rbg(237, 211, 175);
 
+
 .selected{
     border-color: green($color: #000000);
 }
@@ -56,3 +57,9 @@ a{
     color: rgb(255,192,14);
 }
 
+
+footer{
+    height: 6em;
+    text-align: center;
+    padding-top: 2em;
+}

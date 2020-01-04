@@ -11,6 +11,8 @@ import { Categorie } from 'src/model/enum/categorie.enum';
 })
 export class AnnonceListeComponent implements OnInit {
 
+
+
   constructor(private service: AnnonceService) {
 
 
@@ -27,13 +29,18 @@ export class AnnonceListeComponent implements OnInit {
 
   public get selectedCategorie(): Categorie {
     return this._selectedCategorie;
+
   }
   public set selectedCategorie(value: Categorie) {
     this._selectedCategorie = value;
 
-    this.annoncesFiltrees = this.annonces.filter(
-      (annonce) => { return annonce.categorie === this.selectedCategorie })
-
+    if (!value) {
+      this.annoncesFiltrees = this.annonces;
+    }
+    else {
+      this.annoncesFiltrees = this.annonces.filter(
+        (annonce) => { return annonce.categorie === this.selectedCategorie })
+    }
 
   }
 
@@ -51,9 +58,7 @@ export class AnnonceListeComponent implements OnInit {
 
 
 
-  scroll(el: HTMLElement) {
-    el.scrollIntoView({ behavior: 'smooth' });
-  }
+
 
 
 

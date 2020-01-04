@@ -1,5 +1,5 @@
 export enum Categorie {
-    Vehicule = "Vehicule",
+    Vehicules = "Vehicules",
     Immobilier = "Immobilier",
     Meubles = "Meubles",
     Hightech = "High-tech",

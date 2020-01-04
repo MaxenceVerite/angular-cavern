@@ -1,30 +1,37 @@
 <div *ngIf="annonces">
 
-    <select (change)="selectedAnnonce = undefined" [(ngModel)]="selectedCategorie"
-        class="browser-default custom-select">
-        <option selected [value]="default"> Toutes categories </option>
-        <option *ngFor="let cat of categories" [value]="cat">{{cat}}</option>
+    <select class="browser-default custom-select" (change)="selectedAnnonce = undefined"
+        [(ngModel)]="selectedCategorie">
+
+        <option selected [ngValue]="null"> Toutes les catégories </option>
+        <option *ngFor="let cat of categories" [value]="cat">{{cat}} </option>
 
     </select>
+    <br /><br />
 
+    <div class="p-3 mb-2 bg-warning text-dark">{{selectedCategorie}} - {{annoncesFiltrees.length}} annonce(s) trouvée(s)
+
+    </div>
     <div class="row row-cols-1 row-cols-md-3">
 
-        <div *ngIf="selectedCategorie; else nonfiltre">
+
+        <ng-container *ngIf="selectedCategorie; else nonfiltre">
+
             <div *ngFor="let an of annoncesFiltrees">
 
                 <div class="col mb-4">
-
                     <annonce-item [class.selected]="an == selectedAnnonce" [annonce]="an"
-                        (click)="selectedAnnonce = an">
+                        (click)="selectedAnnonce = an; scroll(target)">
                     </annonce-item>
 
                 </div>
 
             </div>
-        </div>
+        </ng-container>
 
         <ng-template #nonfiltre>
-            <div *ngFor="let an of annonces">
+
+            <div *ngFor=" let an of annonces">
 
                 <div class="col mb-4">
 
@@ -35,6 +42,7 @@
                 </div>
 
             </div>
+
         </ng-template>
 
     </div>

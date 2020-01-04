@@ -19,7 +19,7 @@ export class Annonce {
 
 
     get url() {
-        return "/assets/img/annonces/" + this.id.toString() + ".png"
+        return "/assets/img/annonces/" + this.id.substring(0, 3) + ".png"
     }
 
 
